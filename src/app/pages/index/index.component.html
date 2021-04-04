@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="example-container">
+    <h2>Left</h2>
+    <div *ngFor="let word of left">{{word}}</div>
+    <div
+      cdkDropList
+      #leftList="cdkDropList"
+      [cdkDropListData]="left"
+      [cdkDropListConnectedTo]="[wordList, rightList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of left" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Center</h2>
+    <div *ngFor="let word of words">{{word}}</div>
+    <div
+      cdkDropList
+      #wordList="cdkDropList"
+      [cdkDropListData]="words"
+      [cdkDropListConnectedTo]="[leftList, rightList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of words" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+
+  <div class="example-container">
+    <h2>Right</h2>
+    <div *ngFor="let word of right">{{word}}</div>
+    <div
+      cdkDropList
+      #rightList="cdkDropList"
+      [cdkDropListData]="right"
+      [cdkDropListConnectedTo]="[leftList, wordList]"
+      class="example-list"
+      (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of right" cdkDrag>{{item}}</div>
+    </div>
+  </div>
+</div>
