@@ -1,7 +1,17 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { IndexComponent } from "./pages/index/index.component";
+import { MainLayoutComponent } from "./layouts/main-layout/main-layout.component";
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '', component: MainLayoutComponent, children: [
+      { path: '', component: IndexComponent },
+      { path: '**', redirectTo: '/' }
+    ],
+  },
+  { path: '**', redirectTo: '/' }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
