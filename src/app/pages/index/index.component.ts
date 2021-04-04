@@ -19,9 +19,7 @@ export class IndexComponent implements OnInit{
   ];
 
   ngOnInit(): void {
-    const box = this.dragndrop.nativeElement.querySelector('.example-box');
-    const style = window.getComputedStyle(box);
-    console.log(style);
+    this.initElem();
   }
 
   constructor(private dragndrop: ElementRef) {
@@ -39,5 +37,10 @@ export class IndexComponent implements OnInit{
     }
   }
 
-
+  public initElem(): void {
+    const item = this.dragndrop.nativeElement.querySelector('.example-list');
+    const style = window.getComputedStyle(item);
+    const itemText = item.textContent;
+    console.log(style);
+  }
 }
